@@ -1,4 +1,5 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -24,18 +25,18 @@
         <li><a href="/">Home</a></li>
          <li><a href="/about">About us</a></li>
       </ul>
-      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <a href="/" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>
   </nav>
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
       <br><br>
-      <h1 class="header center orange-text">tecnogad!</h1>
+      <h1 class="header center orange-text">About us</h1>
       <div class="row center">
         <h5 class="header col s12 light">Aplicación web híbrida para reconocimiento y clasificación de imágenes</h5>
       </div>
       
-      <br><br>
+    <br><br>
 
     </div>
   </div>
