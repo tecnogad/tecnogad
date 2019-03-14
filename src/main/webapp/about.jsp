@@ -39,6 +39,32 @@
     <br><br>
 
     </div>
+    
+    <div class="container">
+				
+		<table id="agenda">
+			<c:forEach items="${requestScope.members}" var="entry">
+				
+					<td>
+					
+					<div class="card">
+					  <img src="${entry.value.photo}" alt="Avatar" style="width:100%">
+					  <div class="container">
+					    <h4><b><c:out value="${entry.value.name}" /></b></h4> 					    
+					  </div>
+					</div>
+					
+					</td>					
+
+			</c:forEach>
+		</table>
+		
+		
+	</div>
+    
+    
+    
+    
   </div>
 
 

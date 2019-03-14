@@ -29,13 +29,13 @@ public class MemberRepository {
 	public void init() {
 		members = new HashMap<String,Member>();
 		index=0;
-		addMember("Carmen", "999999999");
-		addMember("Rafael", "999999999");
-		addMember("Pepe", "999999999");
-		addMember("Juan Carlos", "999999999");
+		addMember("Carmen", "999999999","./images/carmen_definitivo.jpg");
+		addMember("Rafael", "999999999","./images/rafael_definitivo.jpg");
+		addMember("Pepe", "999999999","./images/pepe_definitivo.jpg");
+		addMember("Juan Carlos", "999999999","./images/jc_definitivo.jpg");
 	}
 	
-	public Member addMember(String name, String telephone) {
+	public Member addMember(String name, String telephone,String photo) {
 		
 		if(findByName(name)!=null){
 			
@@ -45,7 +45,7 @@ public class MemberRepository {
 		}
 		// Create random id
 		String id = "c" + index;
-		Member c = new Member(id, name, telephone);
+		Member c = new Member(id, name, telephone,photo);
 		members.put(id,c);
 		index++;
 		return c;

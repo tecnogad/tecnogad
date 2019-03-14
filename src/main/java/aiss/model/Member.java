@@ -5,16 +5,27 @@ public class Member {
 	private String id;
 	private String name;
 	private String telephone;
+	private String photo;
 
-	public Member(String id, String name, String telephone) {
+	public Member(String id, String name, String telephone, String photo) {
 		this.id = id;
 		this.name = name;
 		this.telephone = telephone;
+		this.photo = photo;
 	}
 
 
 	public String getId() {
 		return id;
+	}
+	
+	public String getPhoto() {
+		return photo;
+	}
+	
+	public void setPhoto(String photo) {
+		this.photo = photo;
+		
 	}
 
 	public void setId(String id) {
@@ -39,7 +50,7 @@ public class Member {
 	
 	public Member clone()
 	{
-		return new Member(id,name,telephone);
+		return new Member(id,name,telephone,photo);
 	}
 
 
