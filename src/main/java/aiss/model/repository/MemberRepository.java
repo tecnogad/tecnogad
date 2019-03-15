@@ -29,10 +29,10 @@ public class MemberRepository {
 	public void init() {
 		members = new HashMap<String,Member>();
 		index=0;
-		addMember("Carmen", "999999999","./images/carmen_definitivo.jpg");
-		addMember("Rafael", "999999999","./images/rafael_definitivo.jpg");
-		addMember("Pepe", "999999999","./images/pepe_definitivo.jpg");
-		addMember("Juan Carlos", "999999999","./images/jc_definitivo.jpg");
+		addMember("Carmen Jara", "999999999","./images/carmen_definitivo.jpg");
+		addMember("Rafael Fernández", "999999999","./images/rafael_definitivo.jpg");
+		addMember("José Luís Heredia", "999999999","./images/pepe_definitivo.jpg");
+		addMember("Juan Carlos Gómez", "999999999","./images/jc_definitivo.jpg");
 	}
 	
 	public Member addMember(String name, String telephone,String photo) {

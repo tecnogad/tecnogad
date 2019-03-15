@@ -30,13 +30,9 @@
   </nav>
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
-      <br><br>
-      <h1 class="header center orange-text">About us</h1>
-      <div class="row center">
-        <h5 class="header col s12 light">Aplicación web híbrida para reconocimiento y clasificación de imágenes</h5>
-      </div>
-      
-    <br><br>
+   
+      <h2 class="header center orange-text">About us</h2>
+       
 
     </div>
     
@@ -49,8 +45,8 @@
 					
 					<div class="card">
 					  <img src="${entry.value.photo}" alt="Avatar" style="width:100%">
-					  <div class="container">
-					    <h4><b><c:out value="${entry.value.name}" /></b></h4> 					    
+					  <div class="container" style="height:70px">
+					  <p style="color:grey"><c:out value="${entry.value.name}" /><p>					    
 					  </div>
 					</div>
 					
