@@ -8,11 +8,13 @@ var feedback = function(res) {
 };
 
 new Imgur({
-    clientid: '64f8cbf79cde423', //
+    clientid: '4409588f10776f7', //
     callback: feedback
 });
-
+//Nuestro mail: tecnogad.aiss.g4@gmail.com
+//Clave: juacarpepraf
 //https://www.youtube.com/watch?v=qmNbZmBOaGM
 //Nuestro mail: tecnogad.aiss.g4@gmail.com
 //https://api.imgur.com/oauth2/addclient
 //clien secret 82b29541fd49807335ef9877e09c4e41059b096e
+//a12345 imgur

@@ -1,0 +1,16 @@
+{	
+    "GoogleDrive": { 
+		"tokenUrl":"https://www.googleapis.com/oauth2/v4/token",
+		"clientId":"907680136131-eq32ptmaunb20e29fm44cfjq5fpscg98.apps.googleusercontent.com",
+		"clientSecret":"J2OXv9k2UOAYC4sXKfCtl96i" ,
+		"authorizationFormUrl":"https://accounts.google.com/o/oauth2/v2/auth",
+		"scopes":["https://www.googleapis.com/auth/drive.file"]
+    },
+     "Imgur": {
+		"tokenUrl":"https://api.imgur.com/oauth2/token",
+		"clientId":"09c39405d31fff8",
+		"clientSecret":"5b9f9678ff3e0a4d20cf9ba3d8a07d16077eba9f" ,
+		"authorizationFormUrl":"https://api.imgur.com/oauth2/authorize",
+		"scopes":[]
+    }
+}		
