@@ -1,6 +1,8 @@
+
 package aiss.model.imgur;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -11,49 +13,49 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "height",
-    "url",
-    "width"
+    "data",
+    "success",
+    "status"
 })
-public class Image {
+public class ImagesSearch {
 
-    @JsonProperty("height")
-    private Integer height;
-    @JsonProperty("url")
-    private String url;
-    @JsonProperty("width")
-    private Integer width;
+    @JsonProperty("data")
+    private List<Datum> data = null;
+    @JsonProperty("success")
+    private Boolean success;
+    @JsonProperty("status")
+    private Integer status;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("height")
-    public Integer getHeight() {
-        return height;
+    @JsonProperty("data")
+    public List<Datum> getData() {
+        return data;
     }
 
-    @JsonProperty("height")
-    public void setHeight(Integer height) {
-        this.height = height;
+    @JsonProperty("data")
+    public void setData(List<Datum> data) {
+        this.data = data;
     }
 
-    @JsonProperty("url")
-    public String getUrl() {
-        return url;
+    @JsonProperty("success")
+    public Boolean getSuccess() {
+        return success;
     }
 
-    @JsonProperty("url")
-    public void setUrl(String url) {
-        this.url = url;
+    @JsonProperty("success")
+    public void setSuccess(Boolean success) {
+        this.success = success;
     }
 
-    @JsonProperty("width")
-    public Integer getWidth() {
-        return width;
+    @JsonProperty("status")
+    public Integer getStatus() {
+        return status;
     }
 
-    @JsonProperty("width")
-    public void setWidth(Integer width) {
-        this.width = width;
+    @JsonProperty("status")
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     @JsonAnyGetter
