@@ -6,11 +6,12 @@
 		"authorizationFormUrl":"https://accounts.google.com/o/oauth2/v2/auth",
 		"scopes":["https://www.googleapis.com/auth/drive.file"]
     },
-     "Imgur": {
-		"tokenUrl":"https://api.imgur.com/oauth2/token",
-		"clientId":"64f8cbf79cde423",
-		"clientSecret":"e9a5a17599a41ef7d5f71b2ae22f575615127951" ,
-		"authorizationFormUrl":"https://api.imgur.com/oauth2/authorize",
-		"scopes":[]
+     "Unplash": {
+		"tokenUrl":"https://unsplash.com/oauth/token",
+		"clientId":"9e901fdd076be9ed9803a23c5a839419ddd40a8ac961109261bf4c23a84ce5d2",
+		"clientSecret":"c0cdb6c3fc569bb1ce2babf4b826f48de5899ada4b2ca9a70b43fd3434ac250c" ,
+		"authorizationFormUrl":"https://unsplash.com/oauth/authorize",
+		"scopes":["public"]
     }
+	
 }		

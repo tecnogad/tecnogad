@@ -1,8 +1,7 @@
 
-package aiss.model.imgur;
+package aiss.model.unplash;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -13,49 +12,49 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "data",
-    "success",
-    "status"
+    "small",
+    "medium",
+    "large"
 })
-public class ImagesSearch {
+public class ProfileImage {
 
-    @JsonProperty("data")
-    private List<Datum> data = null;
-    @JsonProperty("success")
-    private Boolean success;
-    @JsonProperty("status")
-    private Integer status;
+    @JsonProperty("small")
+    private String small;
+    @JsonProperty("medium")
+    private String medium;
+    @JsonProperty("large")
+    private String large;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("data")
-    public List<Datum> getData() {
-        return data;
+    @JsonProperty("small")
+    public String getSmall() {
+        return small;
     }
 
-    @JsonProperty("data")
-    public void setData(List<Datum> data) {
-        this.data = data;
+    @JsonProperty("small")
+    public void setSmall(String small) {
+        this.small = small;
     }
 
-    @JsonProperty("success")
-    public Boolean getSuccess() {
-        return success;
+    @JsonProperty("medium")
+    public String getMedium() {
+        return medium;
     }
 
-    @JsonProperty("success")
-    public void setSuccess(Boolean success) {
-        this.success = success;
+    @JsonProperty("medium")
+    public void setMedium(String medium) {
+        this.medium = medium;
     }
 
-    @JsonProperty("status")
-    public Integer getStatus() {
-        return status;
+    @JsonProperty("large")
+    public String getLarge() {
+        return large;
     }
 
-    @JsonProperty("status")
-    public void setStatus(Integer status) {
-        this.status = status;
+    @JsonProperty("large")
+    public void setLarge(String large) {
+        this.large = large;
     }
 
     @JsonAnyGetter
