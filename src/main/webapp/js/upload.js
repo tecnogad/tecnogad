@@ -16,5 +16,6 @@ new Imgur({
 //https://www.youtube.com/watch?v=qmNbZmBOaGM
 //Nuestro mail: tecnogad.aiss.g4@gmail.com
 //https://api.imgur.com/oauth2/addclient
-//clien secret 82b29541fd49807335ef9877e09c4e41059b096e
-//a12345 imgur
+//clien secret e9a5a17599a41ef7d5f71b2ae22f575615127951
+//juacarpepraf10 imgur
+//http://localhost:8090/oauth2callback/Imgur
