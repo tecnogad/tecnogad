@@ -8,7 +8,7 @@ import aiss.model.unplash.ImagesSearch;
 import aiss.model.unplash.Urls;
 
 import java.io.IOException;
-
+import java.util.List;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -33,7 +33,7 @@ public class UnplashImagesListController extends HttpServlet {
             UnplashResource uResource = new UnplashResource(accessToken);
             log.info("there is access token");
 //            Files files = gdResource.getFiles();
-           Urls im =uResource.getImages();
+            List<Urls> im =uResource.getImages();
             if (im != null) {
             	log.info("--> not null");
             
