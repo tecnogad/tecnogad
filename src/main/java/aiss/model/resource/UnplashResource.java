@@ -22,7 +22,7 @@ public class UnplashResource {
     private static final Logger log = Logger.getLogger(UnplashResource.class.getName());
 
     private final String access_token;
-    private final String uri = "https://api.unsplash.com/users/tecnogad/photos/";//TODO
+    private final String uri = "https://api.unsplash.com/users/carjaralv/photos/";//TODO
 
 
     public UnplashResource(String access_token) {
