@@ -27,10 +27,11 @@ public class UnplashImagesListController extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 
         String accessToken = (String) req.getSession().getAttribute("Unplash-token");
-
+        String name = req.getParameter("name");
+        
         if (accessToken != null && !"".equals(accessToken)) {
         	
-            UnplashResource uResource = new UnplashResource(accessToken);
+            UnplashResource uResource = new UnplashResource(accessToken,name);
             log.info("there is access token");
 //            Files files = gdResource.getFiles();
             List<Urls> im =uResource.getImages();

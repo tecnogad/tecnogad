@@ -22,11 +22,13 @@ public class UnplashResource {
     private static final Logger log = Logger.getLogger(UnplashResource.class.getName());
 
     private final String access_token;
-    private final String uri = "https://api.unsplash.com/users/carjaralv/photos/";//TODO
+    private String name;
+    private final String uri = "https://api.unsplash.com/users/";
 
 
-    public UnplashResource(String access_token) {
+    public UnplashResource(String access_token, String name) {
         this.access_token = access_token;
+        this.name=name;
     }
 
     /**
@@ -39,7 +41,7 @@ public class UnplashResource {
 
         List<Urls> images=new ArrayList<>();;
         try {
-            cr = new ClientResource(uri + "?access_token=" + access_token);
+            cr = new ClientResource(uri+name+"/photos/" + "?access_token=" + access_token);
             log.info(uri + "?access_token=" + access_token);
             String s = cr.get(String.class);
             log.info("--> result" +s);
