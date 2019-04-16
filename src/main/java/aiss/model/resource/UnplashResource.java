@@ -3,19 +3,33 @@ package aiss.model.resource;
 
 
 
+import java.io.IOException;
+import org.apache.commons.*;
+
+import org.apache.http.client.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 import org.restlet.data.ChallengeResponse;
 import org.restlet.data.ChallengeScheme;
+import org.restlet.data.Form;
 import org.restlet.data.MediaType;
 import org.restlet.representation.StringRepresentation;
 import org.restlet.resource.ClientResource;
 import org.restlet.resource.ResourceException;
 
+import aiss.model.google.drive.FileItem;
 import aiss.model.unplash.ImagesSearch;
+import aiss.model.unplash.UnplashCollection;
 import aiss.model.unplash.Urls;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.BufferedReader;
 
 public class UnplashResource {
 
@@ -23,12 +37,15 @@ public class UnplashResource {
 
     private final String access_token;
     private String name;
-    private final String uri = "https://api.unsplash.com/users/";
+    private final String uri = "https://api.unsplash.com/";
 
 
     public UnplashResource(String access_token, String name) {
         this.access_token = access_token;
         this.name=name;
+    }
+    public UnplashResource(String access_token) {
+        this.access_token = access_token;
     }
 
     /**
@@ -41,7 +58,7 @@ public class UnplashResource {
 
         List<Urls> images=new ArrayList<>();;
         try {
-            cr = new ClientResource(uri+name+"/photos/" + "?access_token=" + access_token);
+            cr = new ClientResource(uri+"users/"+name+"/photos/" + "?access_token=" + access_token);
             log.info(uri + "?access_token=" + access_token);
             String s = cr.get(String.class);
             log.info("--> result" +s);
@@ -77,6 +94,68 @@ public class UnplashResource {
         }
 
         return images;
+    }
+    
+    
+    public boolean createCollection(String title, String description) throws IOException {
+
+        ClientResource cr = null;
+        log.info("in resource");
+        try {
+            cr = new ClientResource(uri+"collections" + "?access_token=" + access_token);
+
+           UnplashCollection newc= new UnplashCollection();
+           newc.setTitle("ulti");
+           
+            //String s="{\"title\":\"hola\",\"description\":\"des\"}";
+           cr.post(newc);    
+
+            log.info("Create Collection response->" + cr.getResponse().getStatus());
+            return true;
+        
+        } catch (ResourceException re) {
+            log.warning("Error when inserting file: " + cr.getResponse().getStatus());
+            return false;
+        }
+      
+    }
+    public void POSTRequest() throws IOException {
+        //final String POST_PARAMS =  "{\n" + "\"title2000\": 101,\"" + "\n}";
+    	 String data = "title="+"title2000";
+//        System.out.println(data);
+        System.out.println(access_token);
+        URL obj = new URL("https://api.unsplash.com/collections?access_token="+"ac7494081a0483fcbb270238435de2c60bb413fb34c496443c6e93f46eaeaa40");
+        HttpURLConnection postConnection = (HttpURLConnection) obj.openConnection();
+
+        postConnection.setRequestMethod("POST");
+
+        postConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+        
+        postConnection.setRequestProperty("title", "adefgh");
+        postConnection.setRequestProperty("User-agent", "adefgh");
+        postConnection.setDoOutput(true);
+        OutputStream os = postConnection.getOutputStream();
+        OutputStreamWriter wr = new OutputStreamWriter(os);
+        wr.write(data);
+        wr.flush();
+        wr.close();
+        int responseCode = postConnection.getResponseCode();
+        System.out.println("POST Response Code :  " + responseCode);
+        System.out.println("POST Response Message : " + postConnection.getResponseMessage());
+
+        if (responseCode == HttpURLConnection.HTTP_CREATED) { //success
+            BufferedReader in = new BufferedReader(new InputStreamReader(
+                postConnection.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+            while ((inputLine = in .readLine()) != null) {
+                response.append(inputLine);
+            } in .close();
+            // print result
+            System.out.println(response.toString());
+        } else {
+            System.out.println("POST NOT WORKED");
+        }
     }
     }
 

@@ -24,7 +24,7 @@
     <servlet-name>MemberListController</servlet-name>
     <url-pattern>/about</url-pattern>
   </servlet-mapping>
-	     <!-- Unplash files - retrieve-->
+	     <!-- Unplash get images-->
     <servlet>
         <servlet-name>UnplashImagesListController</servlet-name>
         <servlet-class>aiss.controller.UnplashImagesListController</servlet-class>
@@ -32,6 +32,15 @@
     <servlet-mapping>
         <servlet-name>UnplashImagesListController</servlet-name>
         <url-pattern>/unplashImagesList</url-pattern>
+    </servlet-mapping>
+       <!-- Unplash create collection-->
+    <servlet>
+        <servlet-name>UnplashCreateCollectionController</servlet-name>
+        <servlet-class>aiss.controller.UnplashCreateCollectionController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UnplashCreateCollectionController</servlet-name>
+        <url-pattern>/unplashCreateCollection</url-pattern>
     </servlet-mapping>
     
 	     <!-- Imgur files - retrieve
