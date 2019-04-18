@@ -20,6 +20,7 @@ import org.restlet.resource.ClientResource;
 import org.restlet.resource.ResourceException;
 
 import aiss.model.google.drive.FileItem;
+import aiss.model.google.drive.Files;
 import aiss.model.unplash.ImagesSearch;
 import aiss.model.unplash.UnplashCollection;
 import aiss.model.unplash.Urls;
@@ -158,6 +159,45 @@ public class UnplashResource {
             System.out.println("POST NOT WORKED");
         }
     }
+	public List<UnplashCollection> getCollections() {
+		List<UnplashCollection> res=new ArrayList<>();
+		 ClientResource cr = null;
+	        UnplashCollection lc= null;
+	        try {
+	        	String u=uri+"users/"+name+"/collections" + "?access_token=" + access_token;
+	        	System.out.print(u);
+	            cr = new ClientResource(u);
+	            String result = cr.get(String.class);
+	            log.warning("result: " + result);
+	            
+	          //----------------------------------------
+	            String divisor="\"id\":";
+	            String[] parts=result.split(divisor); 
+	            Integer numCollections=parts.length/2;
+	            int j=1;
+	            log.info("NUM-----"+numCollections);
+	            for(int i=1;i<=numCollections; i++) {
+	            	String id=parts[j].substring(0, 7);    
+	                log.info(id);
+	                UnplashCollection uc=new UnplashCollection();
+	                uc.setId(Integer.valueOf(id));
+	                divisor=",\"title\":\"";
+	                String[] subparts=parts[j].split(divisor);
+	                String titleraw[]=subparts[1].split("\"");
+	                String title=titleraw[0];
+	                log.info(title);
+	                uc.setTitle(title);
+	                res.add(uc);
+	                j=j+2;
+	            }
+	           return res;
+	        } catch (ResourceException re) {
+	            log.warning("Error when retrieving collections: " + cr.getResponse().getStatus());
+	            return null;
+	        }
+
+	        
+	}
     }
 
 
