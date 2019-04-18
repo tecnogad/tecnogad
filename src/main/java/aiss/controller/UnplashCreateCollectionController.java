@@ -30,24 +30,23 @@ public class UnplashCreateCollectionController extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 
     	 String accessToken = (String) req.getSession().getAttribute("Unplash-token");
-//         String title = req.getParameter("title");
-//         String description = req.getParameter("description");
+    	 
          //TODO private
-    	 String title="title";
-    	 String description="description";
+    	 String title="title3000";
+
     	 
     	 
          if (accessToken != null && !"".equals(accessToken)) {
              if (title != null && !"".equals(title)) {
             	 UnplashResource uResource = new UnplashResource(accessToken);
             	 log.info("in create controller");
-                 uResource.POSTRequest();
+                 uResource.POSTRequest(title);
                  
                  req.setAttribute("message", "created");
-                 req.getRequestDispatcher("/unplashImageList").forward(req, resp);
+                 req.getRequestDispatcher("/unplashImagesList").forward(req, resp);
              } else {
                  req.setAttribute("message", "You must provide a valid title");
-                 req.setAttribute("description", description);
+
                  req.getRequestDispatcher("unplashCreateCollection.jsp").forward(req, resp);
              }
          } else {

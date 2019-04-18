@@ -119,20 +119,21 @@ public class UnplashResource {
         }
       
     }
-    public void POSTRequest() throws IOException {
+    public void POSTRequest(String title) throws IOException {
         //final String POST_PARAMS =  "{\n" + "\"title2000\": 101,\"" + "\n}";
-    	 String data = "title="+"title2000";
+    	 String data = "title="+title+"\"";
 //        System.out.println(data);
         System.out.println(access_token);
-        URL obj = new URL("https://api.unsplash.com/collections?access_token="+"ac7494081a0483fcbb270238435de2c60bb413fb34c496443c6e93f46eaeaa40");
+       // URL obj = new URL("https://api.unsplash.com/collections?access_token="+"ac7494081a0483fcbb270238435de2c60bb413fb34c496443c6e93f46eaeaa40");
+        URL obj = new URL("https://api.unsplash.com/collections?access_token="+access_token);
         HttpURLConnection postConnection = (HttpURLConnection) obj.openConnection();
 
         postConnection.setRequestMethod("POST");
 
         postConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
         
-        postConnection.setRequestProperty("title", "adefgh");
-        postConnection.setRequestProperty("User-agent", "adefgh");
+  //      postConnection.setRequestProperty("title", "adefgh");
+ //       postConnection.setRequestProperty("User-agent", "adefgh");
         postConnection.setDoOutput(true);
         OutputStream os = postConnection.getOutputStream();
         OutputStreamWriter wr = new OutputStreamWriter(os);

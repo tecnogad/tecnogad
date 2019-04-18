@@ -11,7 +11,7 @@
 		"clientId":"9e901fdd076be9ed9803a23c5a839419ddd40a8ac961109261bf4c23a84ce5d2",
 		"clientSecret":"c0cdb6c3fc569bb1ce2babf4b826f48de5899ada4b2ca9a70b43fd3434ac250c" ,
 		"authorizationFormUrl":"https://unsplash.com/oauth/authorize",
-		"scopes":["public"]
+		"scopes":["public read_photos write_photos read_collections write_collections write_user read_user"]
     }
 	
 }		
