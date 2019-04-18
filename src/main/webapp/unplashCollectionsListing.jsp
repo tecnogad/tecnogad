@@ -7,6 +7,7 @@
     <p class="message">${message}</p>
     <c:forEach items="${unplashcollections}" var="item">
    ${item.title}
+   <a href="/unplashPublishCollection?id=${item.id}">publish</a>
   </c:forEach>
 
 </div>

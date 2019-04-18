@@ -60,6 +60,16 @@
         <servlet-name>UnplashAddPhotoToCollectionController</servlet-name>
         <url-pattern>/unplashAddPhoto</url-pattern>
     </servlet-mapping>
+    
+          <!-- Unplash publish collection-->
+    <servlet>
+        <servlet-name>UnplashPublishCollectionController</servlet-name>
+        <servlet-class>aiss.controller.UnplashPublishCollectionController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UnplashPublishCollectionController</servlet-name>
+        <url-pattern>/unplashPublishCollection</url-pattern>
+    </servlet-mapping>
 	     <!-- Imgur files - retrieve
     <servlet>
         <servlet-name>ImgurImagesListController</servlet-name>

@@ -25,6 +25,7 @@ import aiss.model.unplash.ImagesSearch;
 import aiss.model.unplash.UnplashCollection;
 import aiss.model.unplash.Urls;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.io.InputStreamReader;
@@ -200,7 +201,7 @@ public class UnplashResource {
 	}
 
 		 public void  addPhotoToCollection(String photoId, String collectionId) throws IOException {
-		        //final String POST_PARAMS =  "{\n" + "\"title2000\": 101,\"" + "\n}";
+		       
 		    	 String data = "photo_id="+photoId;
 		        System.out.println("data in addPhotoToCollection***"+data);
 		        System.out.println(access_token);
@@ -238,6 +239,43 @@ public class UnplashResource {
 		            System.out.println("POST NOT WORKED");
 		        }
 		    }
+		public void publish(String collectionId) throws IOException {
+			// TODO Put
+			 String data = "private=false";
+		        System.out.println("data in publishCollection***"+data);
+		        System.out.println(access_token);
+		        URL obj = new URL("https://api.unsplash.com/collections/"+collectionId+"?access_token="+access_token);
+		        HttpURLConnection putConnection = (HttpURLConnection) obj.openConnection();
+
+		        putConnection.setRequestMethod("PUT");
+
+		        putConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+	
+		        putConnection.setDoOutput(true);
+		        OutputStream os = putConnection.getOutputStream();
+		        OutputStreamWriter wr = new OutputStreamWriter(os);
+		        wr.write(data);
+		        wr.flush();
+		        wr.close();
+		        int responseCode = putConnection.getResponseCode();
+		        System.out.println("Response Code :  " + responseCode);
+		        System.out.println("Response Message : " + putConnection.getResponseMessage());
+
+		        if (responseCode == HttpURLConnection.HTTP_CREATED) { //success
+		            BufferedReader in = new BufferedReader(new InputStreamReader(
+		                putConnection.getInputStream()));
+		            String inputLine;
+		            StringBuffer response = new StringBuffer();
+		            while ((inputLine = in .readLine()) != null) {
+		                response.append(inputLine);
+		            } in .close();
+		            // print result
+		            System.out.println(response.toString());
+		        } else {
+		            System.out.println("PUT NOT WORKED");
+		        }
+			
+		}
     }
 
 
