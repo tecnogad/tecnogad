@@ -122,7 +122,7 @@ public class UnplashResource {
     }
     public void POSTRequest(String title) throws IOException {
         //final String POST_PARAMS =  "{\n" + "\"title2000\": 101,\"" + "\n}";
-    	 String data = "title="+title+"\"";
+    	 String data = "title="+title;
 //        System.out.println(data);
         System.out.println(access_token);
        // URL obj = new URL("https://api.unsplash.com/collections?access_token="+"ac7494081a0483fcbb270238435de2c60bb413fb34c496443c6e93f46eaeaa40");
@@ -198,6 +198,46 @@ public class UnplashResource {
 
 	        
 	}
+
+		 public void  addPhotoToCollection(String photoId, String collectionId) throws IOException {
+		        //final String POST_PARAMS =  "{\n" + "\"title2000\": 101,\"" + "\n}";
+		    	 String data = "photo_id="+photoId;
+		        System.out.println("data in addPhotoToCollection***"+data);
+		        System.out.println(access_token);
+		       // URL obj = new URL("https://api.unsplash.com/collections?access_token="+"ac7494081a0483fcbb270238435de2c60bb413fb34c496443c6e93f46eaeaa40");
+		        URL obj = new URL("https://api.unsplash.com/collections/"+collectionId+"/add?access_token="+access_token);
+		        HttpURLConnection postConnection = (HttpURLConnection) obj.openConnection();
+
+		        postConnection.setRequestMethod("POST");
+
+		        postConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+		        
+		  //      postConnection.setRequestProperty("title", "adefgh");
+		 //       postConnection.setRequestProperty("User-agent", "adefgh");
+		        postConnection.setDoOutput(true);
+		        OutputStream os = postConnection.getOutputStream();
+		        OutputStreamWriter wr = new OutputStreamWriter(os);
+		        wr.write(data);
+		        wr.flush();
+		        wr.close();
+		        int responseCode = postConnection.getResponseCode();
+		        System.out.println("POST Response Code :  " + responseCode);
+		        System.out.println("POST Response Message : " + postConnection.getResponseMessage());
+
+		        if (responseCode == HttpURLConnection.HTTP_CREATED) { //success
+		            BufferedReader in = new BufferedReader(new InputStreamReader(
+		                postConnection.getInputStream()));
+		            String inputLine;
+		            StringBuffer response = new StringBuffer();
+		            while ((inputLine = in .readLine()) != null) {
+		                response.append(inputLine);
+		            } in .close();
+		            // print result
+		            System.out.println(response.toString());
+		        } else {
+		            System.out.println("POST NOT WORKED");
+		        }
+		    }
     }
 
 

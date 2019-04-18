@@ -51,7 +51,15 @@
         <servlet-name>UnplashCollectionsListController</servlet-name>
         <url-pattern>/unplashCollectionsList</url-pattern>
     </servlet-mapping>
-    
+      <!-- Unplash add photo to collection-->
+    <servlet>
+        <servlet-name>UnplashAddPhotoToCollectionController</servlet-name>
+        <servlet-class>aiss.controller.UnplashAddPhotoToCollectionController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UnplashAddPhotoToCollectionController</servlet-name>
+        <url-pattern>/unplashAddPhoto</url-pattern>
+    </servlet-mapping>
 	     <!-- Imgur files - retrieve
     <servlet>
         <servlet-name>ImgurImagesListController</servlet-name>

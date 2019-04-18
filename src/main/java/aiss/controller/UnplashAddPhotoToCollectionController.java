@@ -5,7 +5,6 @@ package aiss.controller;
 
 import aiss.model.resource.UnplashResource;
 import aiss.model.unplash.ImagesSearch;
-import aiss.model.unplash.UnplashCollection;
 import aiss.model.unplash.Urls;
 
 import java.io.IOException;
@@ -16,33 +15,29 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class UnplashCollectionsListController extends HttpServlet {
+public class UnplashAddPhotoToCollectionController extends HttpServlet {
 
     /**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private static final Logger log = Logger.getLogger(UnplashCollectionsListController.class.getName());
+	private static final Logger log = Logger.getLogger(UnplashAddPhotoToCollectionController.class.getName());
 
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 
         String accessToken = (String) req.getSession().getAttribute("Unplash-token");
-                
+        String photoId = req.getParameter("id");
+        String collectionId="4663599";//TODO
+        photoId="kl1mKBN69Ok";//TODO
         if (accessToken != null && !"".equals(accessToken)) {
-        	String name ="carjaralv";//TODO
-            UnplashResource uResource = new UnplashResource(accessToken, name);
-            log.info("there is access token in list collection controller");
-            List<UnplashCollection> l=uResource.getCollections();
-            if (l != null && !l.isEmpty()) {
-            	log.info("--> list");
-            
-            	req.setAttribute("unplashcollections", l);
+        	
+            UnplashResource uResource = new UnplashResource(accessToken);
+            log.info("there is access token in ADD***");
+//            Files files = gdResource.getFiles();
+            uResource.addPhotoToCollection(photoId,collectionId);
                 req.getRequestDispatcher("/unplashCollectionsListing.jsp").forward(req, resp);
-            } else {
-               log.info("Collections null... probably your token has experied. Redirecting to OAuth servlet.");
-               req.getRequestDispatcher("/AuthController/Unplash").forward(req, resp);
-               }
+            
         } else {
             log.info("Trying to access without an access token, redirecting to OAuth servlet");
             req.getRequestDispatcher("/AuthController/Unplash").forward(req, resp);
