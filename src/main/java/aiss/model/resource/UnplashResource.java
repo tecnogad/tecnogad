@@ -69,8 +69,6 @@ public class UnplashResource {
             log.info("--> result" +s[0].getId());
            
             images = Arrays.asList(s);
-//----------------------------------------
-
 
         } catch (ResourceException re) {
             log.warning("Error when retrieving all imagess: " + cr.getResponse().getStatus());
@@ -89,8 +87,7 @@ public class UnplashResource {
 
            UnplashCollection newc= new UnplashCollection();
            newc.setTitle("ulti");
-           
-            //String s="{\"title\":\"hola\",\"description\":\"des\"}";
+
            cr.post(newc);    
 
             log.info("Create Collection response->" + cr.getResponse().getStatus());
@@ -104,7 +101,7 @@ public class UnplashResource {
     }
     public void POSTRequest(String title) throws IOException {
         //final String POST_PARAMS =  "{\n" + "\"title2000\": 101,\"" + "\n}";
-    	 String data = "title="+title;
+    	 String data = "title="+title+"&private=true";
 //        System.out.println(data);
         System.out.println(access_token);
        // URL obj = new URL("https://api.unsplash.com/collections?access_token="+"ac7494081a0483fcbb270238435de2c60bb413fb34c496443c6e93f46eaeaa40");
@@ -151,27 +148,15 @@ public class UnplashResource {
 	            cr = new ClientResource(u);
 	            String result = cr.get(String.class);
 	            log.warning("result: " + result);
+	            UnplashCollection[] s = cr.get(UnplashCollection[].class);
+	            log.info("--> result" +s[0].getId());
+	           
+	            res = Arrays.asList(s);
+	            //UnplashCollection has an atribute named "private" in json
+	            //Json is a reserved word, so we are going to introduce the value in a new attribute "published"
+	            //"published" will be in Map<String, Object> additionalProperties
+	            checkPublished(res);
 	            
-	          //----------------------------------------
-	            String divisor="\"id\":";
-	            String[] parts=result.split(divisor); 
-	            Integer numCollections=parts.length/2;
-	            int j=1;
-	            log.info("NUM-----"+numCollections);
-	            for(int i=1;i<=numCollections; i++) {
-	            	String id=parts[j].substring(0, 7);    
-	                log.info(id);
-	                UnplashCollection uc=new UnplashCollection();
-	                uc.setId(Integer.valueOf(id));
-	                divisor=",\"title\":\"";
-	                String[] subparts=parts[j].split(divisor);
-	                String titleraw[]=subparts[1].split("\"");
-	                String title=titleraw[0];
-	                log.info(title);
-	                uc.setTitle(title);
-	                res.add(uc);
-	                j=j+2;
-	            }
 	           return res;
 	        } catch (ResourceException re) {
 	            log.warning("Error when retrieving collections: " + cr.getResponse().getStatus());
@@ -181,7 +166,19 @@ public class UnplashResource {
 	        
 	}
 
-		 public void  addPhotoToCollection(String photoId, String collectionId) throws IOException {
+		 private List<UnplashCollection> checkPublished(List<UnplashCollection> res) {
+			 List<UnplashCollection> l=new ArrayList<UnplashCollection>();
+			 for(UnplashCollection c: res){
+				 if(c.getPrivate()) {
+					 c.setAdditionalProperty("published", false);
+				 }
+				 else {
+					 c.setAdditionalProperty("published", true);
+				 }
+			 }
+		return l;
+	}
+		public void  addPhotoToCollection(String photoId, String collectionId) throws IOException {
 		       
 		    	 String data = "photo_id="+photoId;
 		        System.out.println("data in addPhotoToCollection***"+data);
