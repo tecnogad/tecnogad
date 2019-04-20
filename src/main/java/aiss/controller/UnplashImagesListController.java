@@ -31,7 +31,7 @@ public class UnplashImagesListController extends HttpServlet {
         
         if (accessToken != null && !"".equals(accessToken)) {
         	
-            UnplashResource uResource = new UnplashResource(accessToken,name);
+            UnplashResource uResource = new UnplashResource(accessToken);
             log.info("there is access token");
 //            Files files = gdResource.getFiles();
             List<ImagesSearch> im =uResource.getImages();

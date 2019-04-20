@@ -70,6 +70,15 @@
         <servlet-name>UnplashPublishCollectionController</servlet-name>
         <url-pattern>/unplashPublishCollection</url-pattern>
     </servlet-mapping>
+              <!-- Unplash delete collection-->
+    <servlet>
+        <servlet-name>UnplashDeleteCollectionController</servlet-name>
+        <servlet-class>aiss.controller.UnplashDeleteCollectionController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UnplashDeleteCollectionController</servlet-name>
+        <url-pattern>/unplashDeleteCollection</url-pattern>
+    </servlet-mapping>
 	     <!-- Imgur files - retrieve
     <servlet>
         <servlet-name>ImgurImagesListController</servlet-name>

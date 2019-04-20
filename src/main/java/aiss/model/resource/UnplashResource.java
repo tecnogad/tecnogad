@@ -27,6 +27,8 @@ import aiss.model.google.drive.Files;
 import aiss.model.unplash.ImagesSearch;
 import aiss.model.unplash.UnplashCollection;
 import aiss.model.unplash.Urls;
+import aiss.model.unplash.User;
+
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -45,13 +47,11 @@ public class UnplashResource {
     private final String uri = "https://api.unsplash.com/";
 
 
-    public UnplashResource(String access_token, String name) {
-        this.access_token = access_token;
-        this.name=name;
-    }
     public UnplashResource(String access_token) {
         this.access_token = access_token;
+        this.name=this.getUsername();
     }
+
 
     /**
      *
@@ -60,15 +60,17 @@ public class UnplashResource {
     public List<ImagesSearch> getImages() {
     	 log.info(this.access_token);
     	 List<ImagesSearch> images=new ArrayList<>();
-        ClientResource cr = null;
+         ClientResource cr = null;
 
         try {
             cr = new ClientResource(uri+"users/"+name+"/photos/" + "?access_token=" + access_token);
             log.info(uri + "?access_token=" + access_token);
             ImagesSearch[] s = cr.get(ImagesSearch[].class);
-            log.info("--> result" +s[0].getId());
-           
-            images = Arrays.asList(s);
+            //log.info("--> result" +s[0].getId());
+           if(s.length>0) {
+        	   images = Arrays.asList(s);
+           }
+  
 
         } catch (ResourceException re) {
             log.warning("Error when retrieving all imagess: " + cr.getResponse().getStatus());
@@ -76,6 +78,26 @@ public class UnplashResource {
 
         return images;
     }
+    
+    public String getUsername() {
+   	 log.info(this.access_token);
+   	 String s="";
+       ClientResource cr = null;
+
+       try {
+           cr = new ClientResource(uri+"me/?access_token=" + access_token);
+           User user = cr.get(User.class);
+           s=user.getUsername();
+           log.info("--> result" +s);
+          
+
+       } catch (ResourceException re) {
+           log.warning("Error when retrieving username: " + cr.getResponse().getStatus());
+       }
+
+       return s;
+   }
+
     
     
     public boolean createCollection(String title, String description) throws IOException {
@@ -253,6 +275,20 @@ public class UnplashResource {
 		            System.out.println("PUT NOT WORKED");
 		        }
 			
+		}
+
+
+		public void delete(String collectionId) {
+			log.info(this.access_token);
+		   	ClientResource cr = null;
+
+		       try {
+		           cr = new ClientResource(uri+"collections/"+collectionId+"/?access_token=" + access_token);
+		           cr.delete();
+		       } catch (ResourceException re) {
+		           log.warning("Error when retrieving username: " + cr.getResponse().getStatus());
+		       }
+
 		}
     }
 
