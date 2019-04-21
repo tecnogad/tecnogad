@@ -172,8 +172,10 @@ public class UnplashResource {
 	            log.warning("result: " + result);
 	            UnplashCollection[] s = cr.get(UnplashCollection[].class);
 	            log.info("--> result" +s[0].getId());
-	           
-	            res = Arrays.asList(s);
+	            if(s.length>0) {
+	            	res = Arrays.asList(s);
+	            }
+	            
 	            //UnplashCollection has an atribute named "private" in json
 	            //Json is a reserved word, so we are going to introduce the value in a new attribute "published"
 	            //"published" will be in Map<String, Object> additionalProperties
