@@ -242,7 +242,7 @@ public class UnplashResource {
 		        }
 		    }
 		public void publish(String collectionId) throws IOException {
-			// TODO Put
+			// Put
 			 String data = "private=false";
 		        System.out.println("data in publishCollection***"+data);
 		        System.out.println(access_token);

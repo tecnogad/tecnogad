@@ -37,9 +37,7 @@ public class UnsplashResourceTest {
 	public void testGetCollections() throws IOException {
 		user =new User();
 		user.setUsername("caejaralv");
-		String title="title";
 
-//		ur.createCollection(title, "");
 
 		List<UnplashCollection> cs = ur.getCollections(); 
 		

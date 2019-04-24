@@ -34,7 +34,7 @@ public class UnplashPublishCollectionController extends HttpServlet {
             UnplashResource uResource = new UnplashResource(accessToken);
             log.info("there is access token in publish controler");
             uResource.publish(collectionId);
-                req.getRequestDispatcher("/unplashCollectionsListing.jsp").forward(req, resp);
+                req.getRequestDispatcher("/unplashCollectionsList").forward(req, resp);
             
         } else {
             log.info("Trying to access without an access token, redirecting to OAuth servlet");
