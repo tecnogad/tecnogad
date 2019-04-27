@@ -2,10 +2,10 @@
  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   
-<h1>Unsplash Collections</h1>
+
 
 <div class="container">
-
+<h1>Unsplash Collections</h1>
     <p class="message">${message}</p>
   <table><tbody>
   <tr><th><c:out value="Nombre"></c:out></th><th><c:out value="Publicar"></c:out></th><th><c:out value="Eliminar"></c:out></th></tr>

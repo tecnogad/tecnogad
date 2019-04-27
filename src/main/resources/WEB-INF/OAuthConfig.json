@@ -8,8 +8,8 @@
     },
      "Unplash": {
 		"tokenUrl":"https://unsplash.com/oauth/token",
-		"clientId":"3ad24c9caac7e0b2ac31f408747f32e09fcd51a1c457ba60a8012db9b59de420",
-		"clientSecret":"b15a55718360f13c49eb6f6be5a048045b23513510f250b391b7445f13bbf087" ,
+		"clientId":"d9d5f89967e09d0b2de54059387a51855895532676d61edb1f3eea11ba96bc96",
+		"clientSecret":"0a59f675fd91205a6bf74fca684e6d999b8f44a2be278b0df15c71bdebf92309" ,
 		"authorizationFormUrl":"https://unsplash.com/oauth/authorize",
 		"scopes":["public read_photos write_photos read_collections write_collections write_user read_user"]
     }

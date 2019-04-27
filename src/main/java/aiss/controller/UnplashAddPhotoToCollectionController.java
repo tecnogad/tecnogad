@@ -28,15 +28,15 @@ public class UnplashAddPhotoToCollectionController extends HttpServlet {
 
         String accessToken = (String) req.getSession().getAttribute("Unplash-token");
         String photoId = req.getParameter("id");
-        String collectionId="4663599";//TODO
-        photoId="kl1mKBN69Ok";//TODO
+        String collectionId="4714089";//TODO
+       
         if (accessToken != null && !"".equals(accessToken)) {
         	
             UnplashResource uResource = new UnplashResource(accessToken);
             log.info("there is access token in ADD***");
 //            Files files = gdResource.getFiles();
             uResource.addPhotoToCollection(photoId,collectionId);
-                req.getRequestDispatcher("/unplashCollectionsListing.jsp").forward(req, resp);
+                req.getRequestDispatcher("/unplashImagesList").forward(req, resp);
             
         } else {
             log.info("Trying to access without an access token, redirecting to OAuth servlet");

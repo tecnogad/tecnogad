@@ -32,7 +32,7 @@ public class UnplashCreateCollectionController extends HttpServlet {
     	 String accessToken = (String) req.getSession().getAttribute("Unplash-token");
     	 
          //TODO
-    	 String title="title3000";
+    	 String title="New collection";
 
     	 
     	 
@@ -43,7 +43,7 @@ public class UnplashCreateCollectionController extends HttpServlet {
                  uResource.POSTRequest(title);
                  
                  req.setAttribute("message", "created");
-                 req.getRequestDispatcher("/unplashImagesList").forward(req, resp);
+                 req.getRequestDispatcher("/unplashCollectionsList").forward(req, resp);
              } else {
                  req.setAttribute("message", "You must provide a valid title");
 
